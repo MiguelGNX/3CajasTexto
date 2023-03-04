@@ -4,6 +4,7 @@ import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 import { TouchableOpacity } from "react-native";
 
 export default function App() {
+  const [isActivo, setActivo] = useState(false)
   const [materia, setMateria] = useState("");
   const Separator = () => <View style={styles.separator} />;
   const [materia2, setMateria2] = useState("");
@@ -11,6 +12,7 @@ export default function App() {
   const [unificador, setUnificador] = useState("");
 
   const onPressUnificador = () => {
+    setActivo (true)
     setUnificador(materia + " \n" + materia2 + " \n " + materia3),
       setMateria(""),
       setMateria2(""),
@@ -61,7 +63,9 @@ export default function App() {
       <Separator />
       <TouchableOpacity>
           <Text style = {styles.button}>
-            <Button onPress={onPressUnificador}
+            <Button 
+            disabled = {isActivo}
+            onPress={onPressUnificador}
             title = "Cargar Materias"
             color= "white"
            
